@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Permet de configurer le site en responsive -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <!-- Import du fichier style.css -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ app.request.server.get('REQUEST_TIME') }}" />
+
+        <!-- Nomme l'onglet du navigateur -->
+        <title>Home</title>
+</head>
+<body>
+    <header>
+    <img src="{{ asset('images/LogoPathWhite.png') }}" alt="logo cocktails" />
+            <nav>
+                <ul>
+                    <li><a href="{{ path('home') }}">Home</a></li>
+                    <li><a href="{{ path('list-cocktails') }}">List-cocktails</a></li>
+                    <li><a href="{{ path('three-cocktail') }}">Cocktail n°3</a></li>
+                </ul>
+            </nav>
+    </header>

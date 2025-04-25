@@ -1,0 +1,33 @@
+{% include 'partials/_header.html.twig' %}
+
+    <main>
+
+			<h1>Liste des cocktails</h1>
+            <div id="article-order">
+            <!-- On définit la longueur totale du tableau / le nombre total de cocktails -->
+            <!-- {# {% set total = cocktails|length %} #}
+            On définit le point de départ : si le nombre total de cocktails est > 2 alors, le point de départ "start" commence à total - 2, sinon il commence à 0 (évite erreur Twig) -->
+            <!-- {# {% set start = total > 2 ? total - 2 : 0 %} #}
+             -->
+            <!-- On créé une boucle en précisant une portée / range démarrant du point "start" et terminant au nombre "total" de cocktails, soit la dernière cocktail -->
+            <!-- {# {% for i in range(start, total) %} #} -->
+            <!-- On incorpore l'index dans la définition de cocktail pour pouvoir cibler avec la boucle les 3 dernières cocktails -->
+             <!-- {#   {% set cocktail = cocktails[i] %} #} -->
+                {% for cocktail in cocktails %}
+
+					<article class="list-articles article">
+
+						<h2>{{ cocktail.nom }}</h2>
+                        <img class="article-image" src="{{ cocktail.image }}" />
+                        <ul>{% for ingredient in cocktail.ingredients %} <li>{{ ingredient }}</li>{% endfor %}</ul>
+						<p class="article-content">{{ cocktail.description }}</p>
+						<p class="article-date">{{ cocktail.date_creation | date('d-m-Y')}}</p>
+                        <p>{{ cocktail.id }}</p>		
+
+					</article>
+				
+			    {% endfor %}
+
+            </div>
+		</main>
+{% include 'partials/_footer.html.twig' %}
