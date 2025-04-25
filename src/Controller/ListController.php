@@ -10,12 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 // Création de la classe ListController
 class ListController extends AbstractController {
-
-	// Ajout d'une fonction nommée listCocktails (méthode) 
+	
 	// Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	// Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-    #[Route('/list-cocktails', name:"list-cocktails")]
-	public function listCocktails() {
+    #[Route('/list-cocktails', name:"list-cocktails")] // Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+    // Ajout d'une fonction nommée listCocktails (méthode) 
+	public function listCocktails() { 
 
         $cocktails = [
             1 => [
@@ -37,7 +36,7 @@ class ListController extends AbstractController {
             2 => [
                 'id'            => 2,
                 'nom'           => 'Margarita',
-                'image'         => 'images/margarita.webp',
+                'image'         => 'images/margarita.jpg',
                 'ingredients'   => [
                     '50 ml de tequila',
                     '25 ml de triple sec (Cointreau)',
@@ -52,7 +51,7 @@ class ListController extends AbstractController {
             3 => [
                 'id'            => 3,
                 'nom'           => 'Old Fashioned',
-                'image'         => 'images/old_fashioned.jpg',
+                'image'         => 'images/old_fashioned.png',
                 'ingredients'   => [
                     '60 ml de bourbon ou rye whisky',
                     '1 morceau de sucre',
@@ -93,7 +92,7 @@ class ListController extends AbstractController {
                 'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
             ],
     ];
-
         return $this->render('list-cocktails.html.twig', ['cocktails' => $cocktails]);
     }
 }
+?>

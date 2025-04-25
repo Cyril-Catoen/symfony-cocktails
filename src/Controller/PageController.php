@@ -11,11 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // Création de la classe PageController
 class PageController extends AbstractController {
 
-	// Ajout d'une fonction nommée Home (méthode)
-	// Définition d'une route, soit le chemin d'accès (url) à "/"
-	// Quand un utilisateur demande l'url "/", la fonction est appelée
-	#[Route('home', name:"home")]
-	public function home() {
+	#[Route('home', name:"home")] // Définition d'une route, soit le chemin d'accès (url) à "/"
+	public function home() { // Ajout d'une fonction nommée Home (méthode) // Quand un utilisateur demande l'url "/", la fonction est appelée
 
         $cocktails = [
             1 => [
@@ -37,7 +34,7 @@ class PageController extends AbstractController {
             2 => [
                 'id'            => 2,
                 'nom'           => 'Margarita',
-                'image'         => 'images/margarita.webp',
+                'image'         => 'images/margarita.jpg',
                 'ingredients'   => [
                     '50 ml de tequila',
                     '25 ml de triple sec (Cointreau)',
@@ -52,7 +49,7 @@ class PageController extends AbstractController {
             3 => [
                 'id'            => 3,
                 'nom'           => 'Old Fashioned',
-                'image'         => 'images/old_fashioned.jpg',
+                'image'         => 'images/old_fashioned.png',
                 'ingredients'   => [
                     '60 ml de bourbon ou rye whisky',
                     '1 morceau de sucre',
@@ -92,16 +89,13 @@ class PageController extends AbstractController {
                 'date_creation' => '1919-06-01',
                 'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
             ],
-    ];
+        ];
 
-    $lastCocktails = array_slice($cocktails, -2, 2, true);
+        $lastCocktails = array_slice($cocktails, -2, 2, true);
 
-
-    return $this->render('home.html.twig', [
+        return $this->render('home.html.twig', [
         'cocktails' => $lastCocktails
-    ]);
+        ]);
+    }
 }
-
-}
-
 ?>

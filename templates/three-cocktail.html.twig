@@ -9,7 +9,7 @@
 					<article class="list-articles article">
 
 						<h2>{{ cocktail.nom }}</h2>
-                        <img class="article-image" src="{{ cocktail.image }}" />
+                        <div class="cocktail-card"><img class="article-image" src="{{ cocktail.image }}" /></div>
                         <ul>{% for ingredient in cocktail.ingredients %} <li>{{ ingredient }}</li>{% endfor %}</ul>
 						<p class="article-content">{{ cocktail.description }}</p>
 						<p class="article-date">{{ cocktail.date_creation | date('d-m-Y')}}</p>

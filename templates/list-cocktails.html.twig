@@ -8,7 +8,7 @@
                     <article class="list-articles article">
 
 						<h2>{{ cocktail.nom }}</h2>
-                        <img src="{{ cocktail.image }}" />
+                        <div class="cocktail-card"><img src="{{ cocktail.image }}" /></div>
                         <p>Ingrédients :<ul>{% for ingredient in cocktail.ingredients %} <li>{{ ingredient }}</li>{% endfor %}</ul>
 						</p>
                         <p>{{ cocktail.description }}</p>

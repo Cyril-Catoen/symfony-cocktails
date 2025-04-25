@@ -11,91 +11,89 @@ use Symfony\Component\Routing\Annotation\Route;
 // Création de la classe ListController
 class ThreeCocktailController extends AbstractController {
 
-	// Ajout d'une fonction nommée listCocktails (méthode) 
-	// Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	// Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-    #[Route('/three-cocktail', name:"three-cocktail")]
-	public function threeCocktail() {
+    #[Route('/three-cocktail', name:"three-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
+	public function threeCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
 
-    $cocktails = [
-        1 => [
-            'id'            => 1,
-            'nom'           => 'Mojito',
-            'image'         => 'images/mojito.webp', // photo libre de droits
-            'ingredients'   => [
-                '50 ml de rhum blanc',
-                '½ citron vert (en quartiers)',
-                '2 c.à.c. de sucre de canne',
-                '8 feuilles de menthe fraîche',
-                'Eau pétillante',
-                'Glace pilée'
+        $cocktails = [
+            1 => [
+                'id'            => 1,
+                'nom'           => 'Mojito',
+                'image'         => 'images/mojito.webp', // photo libre de droits
+                'ingredients'   => [
+                    '50 ml de rhum blanc',
+                    '½ citron vert (en quartiers)',
+                    '2 c.à.c. de sucre de canne',
+                    '8 feuilles de menthe fraîche',
+                    'Eau pétillante',
+                    'Glace pilée'
+                ],
+                'date_creation' => '1942-01-01',
+                'description'   => 'Classique cubain ultra-rafraîchissant mêlant menthe et citron vert.'
             ],
-            'date_creation' => '1942-01-01',
-            'description'   => 'Classique cubain ultra-rafraîchissant mêlant menthe et citron vert.'
-        ],
 
-        2 => [
-            'id'            => 2,
-            'nom'           => 'Margarita',
-            'image'         => 'images/margarita.webp',
-            'ingredients'   => [
-                '50 ml de tequila',
-                '25 ml de triple sec (Cointreau)',
-                '25 ml de jus de citron vert frais',
-                'Sel pour givrer le verre',
-                'Glace'
+            2 => [
+                'id'            => 2,
+                'nom'           => 'Margarita',
+                'image'         => 'images/margarita.jpg',
+                'ingredients'   => [
+                    '50 ml de tequila',
+                    '25 ml de triple sec (Cointreau)',
+                    '25 ml de jus de citron vert frais',
+                    'Sel pour givrer le verre',
+                    'Glace'
+                ],
+                'date_creation' => '1938-07-04',
+                'description'   => 'Tequila, triple-sec et citron vert dans un verre givré de sel pour un équilibre acidulé-salé.'
             ],
-            'date_creation' => '1938-07-04',
-            'description'   => 'Tequila, triple-sec et citron vert dans un verre givré de sel pour un équilibre acidulé-salé.'
-        ],
 
-        3 => [
-            'id'            => 3,
-            'nom'           => 'Old Fashioned',
-            'image'         => 'images/old_fashioned.jpg',
-            'ingredients'   => [
-                '60 ml de bourbon ou rye whisky',
-                '1 morceau de sucre',
-                '2 traits d’angostura bitters',
-                'Zeste d’orange',
-                'Glaçon gros format'
+            3 => [
+                'id'            => 3,
+                'nom'           => 'Old Fashioned',
+                'image'         => 'images/old_fashioned.png',
+                'ingredients'   => [
+                    '60 ml de bourbon ou rye whisky',
+                    '1 morceau de sucre',
+                    '2 traits d’angostura bitters',
+                    'Zeste d’orange',
+                    'Glaçon gros format'
+                ],
+                'date_creation' => '1880-05-15',
+                'description'   => 'Icône des classiques : un whisky subtilement sucré et aromatisé aux bitters.'
             ],
-            'date_creation' => '1880-05-15',
-            'description'   => 'Icône des classiques : un whisky subtilement sucré et aromatisé aux bitters.'
-        ],
 
-        4 => [
-            'id'            => 4,
-            'nom'           => 'Piña Colada',
-            'image'         => 'images/pina_colada.jpg',
-            'ingredients'   => [
-                '60 ml de rhum blanc',
-                '90 ml de jus d’ananas',
-                '30 ml de crème de coco',
-                'Glaçons'
+            4 => [
+                'id'            => 4,
+                'nom'           => 'Piña Colada',
+                'image'         => 'images/pina_colada.jpg',
+                'ingredients'   => [
+                    '60 ml de rhum blanc',
+                    '90 ml de jus d’ananas',
+                    '30 ml de crème de coco',
+                    'Glaçons'
+                ],
+                'date_creation' => '1954-08-16',
+                'description'   => 'Spécialité portoricaine crémeuse et fruitée à base d’ananas et de coco.'
             ],
-            'date_creation' => '1954-08-16',
-            'description'   => 'Spécialité portoricaine crémeuse et fruitée à base d’ananas et de coco.'
-        ],
 
-        5 => [
-            'id'            => 5,
-            'nom'           => 'Negroni',
-            'image'         => 'images/negroni.webp',
-            'ingredients'   => [
-                '30 ml de gin',
-                '30 ml de vermouth rouge',
-                '30 ml de Campari',
-                'Zeste d’orange',
-                'Glaçon gros format'
+            5 => [
+                'id'            => 5,
+                'nom'           => 'Negroni',
+                'image'         => 'images/negroni.webp',
+                'ingredients'   => [
+                    '30 ml de gin',
+                    '30 ml de vermouth rouge',
+                    '30 ml de Campari',
+                    'Zeste d’orange',
+                    'Glaçon gros format'
+                ],
+                'date_creation' => '1919-06-01',
+                'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
             ],
-            'date_creation' => '1919-06-01',
-            'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
-        ],
-    ];
+        ];
 
         $cocktailThree = array_slice($cocktails, 2, 1, true);
 
         return $this->render('three-cocktail.html.twig', ['cocktails' => $cocktailThree]);
     }
 }
+?>
