@@ -8,12 +8,12 @@
                     <article class="list-articles article">
 
 						<h2>{{ cocktail.nom }}</h2>
-                        <div class="cocktail-card"><img src="{{ cocktail.image }}" /></div>
+                        <div class="cocktail-card"><img src="{{ asset(cocktail.image) }}" alt="Photo de {{ cocktail.nom }}" /></div>
                         <p>Ingrédients :<ul>{% for ingredient in cocktail.ingredients %} <li>{{ ingredient }}</li>{% endfor %}</ul>
 						</p>
                         <p>{{ cocktail.description }}</p>
 						<p>{{ cocktail.date_creation | date('d-m-Y')}}
-						<a href="{{ path('single-cocktail', { id: cocktail.id }) }}">Voir le Cocktail n° {{ cocktail.id }}</a>		
+							<a href="{{ path('single-cocktail', { 'id': cocktail.id }) }}">Voir ce cocktail</a>	
 
 					</article>
 				

@@ -96,8 +96,12 @@ class CocktailController extends AbstractController {
         return $this->render('list-cocktails.html.twig', ['cocktails' => $cocktails]);
     }
 
-    #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+    #[Route('/single-cocktail/{id}', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
+	public function singleCocktail($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+
+    // #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
+    // public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+    
 
         $cocktails = [
             1 => [
@@ -176,8 +180,8 @@ class CocktailController extends AbstractController {
             ],
         ];
 
-        $cocktailID = $request->query->get("id");
-        $singleCocktail = $cocktails[$cocktailID];
+        // $cocktailID = $request->query->get("id");
+        $singleCocktail = $cocktails[$id];
 
         return $this->render('single-cocktail.html.twig', ['cocktail' => $singleCocktail]);
     }

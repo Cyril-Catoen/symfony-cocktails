@@ -8,7 +8,7 @@
 					<article class="list-articles article">
 
 						<h2>{{ cocktail.nom }}</h2>
-                        <div class="cocktail-card"><img class="article-image" src="{{ cocktail.image }}" /></div>
+                        <div class="cocktail-card"><img class="article-image" src="{{ asset(cocktail.image) }}" alt="Photo de {{ cocktail.nom }}"></div>
                         <ul>{% for ingredient in cocktail.ingredients %} <li>{{ ingredient }}</li>{% endfor %}</ul>
 						<p class="article-content">{{ cocktail.description }}</p>
 						<p class="article-date">{{ cocktail.date_creation | date('d-m-Y')}}</p>
