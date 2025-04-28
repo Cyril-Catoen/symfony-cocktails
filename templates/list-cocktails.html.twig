@@ -13,7 +13,7 @@
 						</p>
                         <p>{{ cocktail.description }}</p>
 						<p>{{ cocktail.date_creation | date('d-m-Y')}}
-                        <p>{{ cocktail.id }}</p>		
+                        <a href="{{ path('single-cocktail?id={{ cocktail.id }}) }}">Voir le Cocktail n° {{ cocktail.id }}</a>		
 
 					</article>
 				

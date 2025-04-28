@@ -8,11 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// Création de la classe PageController
-class PageController extends AbstractController {
+// Création de la classe ListController
+class SingleCocktailController extends AbstractController {
 
-	#[Route('/', name:"home")] // Définition d'une route, soit le chemin d'accès (url) à "/"
-	public function home() { // Ajout d'une fonction nommée Home (méthode) // Quand un utilisateur demande l'url "/", la fonction est appelée
+    #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
+	public function singleCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
 
         $cocktails = [
             1 => [
@@ -30,7 +30,7 @@ class PageController extends AbstractController {
                 'date_creation' => '1942-01-01',
                 'description'   => 'Classique cubain ultra-rafraîchissant mêlant menthe et citron vert.'
             ],
-    
+
             2 => [
                 'id'            => 2,
                 'nom'           => 'Margarita',
@@ -45,7 +45,7 @@ class PageController extends AbstractController {
                 'date_creation' => '1938-07-04',
                 'description'   => 'Tequila, triple-sec et citron vert dans un verre givré de sel pour un équilibre acidulé-salé.'
             ],
-    
+
             3 => [
                 'id'            => 3,
                 'nom'           => 'Old Fashioned',
@@ -60,7 +60,7 @@ class PageController extends AbstractController {
                 'date_creation' => '1880-05-15',
                 'description'   => 'Icône des classiques : un whisky subtilement sucré et aromatisé aux bitters.'
             ],
-    
+
             4 => [
                 'id'            => 4,
                 'nom'           => 'Piña Colada',
@@ -74,7 +74,7 @@ class PageController extends AbstractController {
                 'date_creation' => '1954-08-16',
                 'description'   => 'Spécialité portoricaine crémeuse et fruitée à base d’ananas et de coco.'
             ],
-    
+
             5 => [
                 'id'            => 5,
                 'nom'           => 'Negroni',
@@ -91,11 +91,10 @@ class PageController extends AbstractController {
             ],
         ];
 
-        $lastCocktails = array_slice($cocktails, -2, 2, true);
+        $cocktailID = $_GET['id'];
+        $singleCocktail = $cocktails[$cocktailID];
 
-        return $this->render('home.html.twig', [
-        'cocktails' => $lastCocktails
-        ]);
+        return $this->render('single-cocktail.html.twig', ['cocktail' => $singleCocktail]);
     }
 }
 ?>
