@@ -13,6 +13,22 @@ main{
   width: 80%;
   margin-top: 1vh;
   min-height: 77.5vh;
+  position: relative;
+}
+
+.sidebar {
+  width: 20vw;
+  height: 40vh;
+  position: absolute;
+  left: 80%;
+  background-image: url(../images/king.webp);
+  background-position: top;
+  background-size: cover;
+}
+
+.sidebar-pub {
+  font-size : 2rem;
+  text-align: center;
 }
   
 .cocktail-card {
