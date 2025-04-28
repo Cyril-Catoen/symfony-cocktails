@@ -1,24 +1,8 @@
 {% include 'partials/_header.html.twig' %}
 
     <main>
+		<h1>Derniers cocktails créés</h1>
+           	{% include 'partials/_cocktail-loop.html.twig' %}
+	</main>
 
-			<h1>Derniers cocktails créés</h1>
-            <div id="article-order">
-                {% for cocktail in cocktails %}
-
-					<article class="list-articles article">
-
-						<h2>{{ cocktail.nom }}</h2>
-                        <div class="cocktail-card"><img class="article-image" src="{{ cocktail.image }}" /></div>
-                        <ul>{% for ingredient in cocktail.ingredients %} <li>{{ ingredient }}</li>{% endfor %}</ul>
-						<p class="article-content">{{ cocktail.description }}</p>
-						<p class="article-date">{{ cocktail.date_creation | date('d-m-Y')}}</p>
-                        <p>{{ cocktail.id }}</p>		
-
-					</article>
-				
-			    {% endfor %}
-
-            </div>
-		</main>
 {% include 'partials/_footer.html.twig' %}
