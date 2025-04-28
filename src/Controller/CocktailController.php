@@ -6,6 +6,7 @@ namespace App\Controller;
 // Remplace le require. Indique le namespace de la class à utiliser. Symfony & composer réalisent le require automatiquement. 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 // Création de la classe ListController
@@ -96,7 +97,7 @@ class CocktailController extends AbstractController {
     }
 
     #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	public function singleCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+	public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
 
         $cocktails = [
             1 => [
@@ -175,7 +176,7 @@ class CocktailController extends AbstractController {
             ],
         ];
 
-        $cocktailID = $_GET['id'];
+        $cocktailID = $request->query->get("id");
         $singleCocktail = $cocktails[$cocktailID];
 
         return $this->render('single-cocktail.html.twig', ['cocktail' => $singleCocktail]);
