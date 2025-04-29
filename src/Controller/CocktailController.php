@@ -271,5 +271,33 @@ class CocktailController extends AbstractController {
         return $this->render('three-cocktail.html.twig', ['cocktails' => $cocktailThree]);
     } 
 
+
+    #[Route('/cocktail-category', name:"cocktail-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
+	public function categoryCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+        $categories = [
+            1 => [
+                "id" => 1,
+                "nom" => "cocktail",
+                "description" => "cocktails classiques avec alcool"
+            ],
+            2 => [
+                "id" => 2,
+                "nom" => "mocktail",
+                "description" => "cocktails sans alcool"
+            ],
+            3 => [
+                "id" => 3,
+                "nom" => "shooter",
+                "description" => "moins de 25 cl"
+            ],
+            4 => [
+                "id" => 4,
+                "nom" => "cocktails soft",
+                "description" => "cocktails sans alcool fort"
+            ],
+        ];
+        
+        return $this->render('cocktail-category.html.twig', ['categories' => $categories]);
+    }
 }
 ?>
