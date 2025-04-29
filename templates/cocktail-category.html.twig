@@ -12,8 +12,7 @@
 
             <article class="list-articles article">
                 <h2>{{ category.nom }}</h2>
-                <p>{{ category.description }}</p>
-                <p>{{ category.id }}</p>
+                <a href="{{ path('selected-category', { 'id': category.id }) }}">Plus d'informations - cliquez ici</a>	
             </article>
     
         {% endfor %}

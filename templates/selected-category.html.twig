@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+    {% block metatitle %}
+    <!-- Nomme l'onglet du navigateur -->
+    <title>{{ category.nom }}</title>
+    {% endblock metatitle %}
+
+	{% block main %}
+		<main>
+			<h1>{{ category.nom }} :</h1>
+
+            <article class="list-articles article">
+                <p>{{ category.description }}</p>
+            </article>
+    
+		</main>
+	{% endblock main %}

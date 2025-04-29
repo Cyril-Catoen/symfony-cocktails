@@ -299,5 +299,36 @@ class CocktailController extends AbstractController {
         
         return $this->render('cocktail-category.html.twig', ['categories' => $categories]);
     }
+
+    #[Route('/selected-category/{id}', name:"selected-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
+	public function selectedCategory($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+        $categories = [
+            1 => [
+                "id" => 1,
+                "nom" => "cocktail",
+                "description" => "cocktails classiques avec alcool"
+            ],
+            2 => [
+                "id" => 2,
+                "nom" => "mocktail",
+                "description" => "cocktails sans alcool"
+            ],
+            3 => [
+                "id" => 3,
+                "nom" => "shooter",
+                "description" => "moins de 25 cl"
+            ],
+            4 => [
+                "id" => 4,
+                "nom" => "cocktails soft",
+                "description" => "cocktails sans alcool fort"
+            ],
+        ];
+
+        // $cocktailID = $request->query->get("id");
+        $category = $categories[$id];
+        
+        return $this->render('selected-category.html.twig', ['category' => $category]);
+    }
 }
 ?>
