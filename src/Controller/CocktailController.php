@@ -8,8 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Response;
 // use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\cocktailsRepository;
-use App\Repository\categoriesRepository;
+use App\Repository\CocktailsRepository;
+use App\Repository\CategoriesRepository;
 
 // Création de la classe ListController
 class CocktailController extends AbstractController {
@@ -19,7 +19,7 @@ class CocktailController extends AbstractController {
     // Ajout d'une fonction nommée listCocktails (méthode) 
 	public function listCocktails() { 
 
-        $cocktailsRepository = new cocktailsRepository;
+        $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findAll();
 
         return $this->render('list-cocktails.html.twig', ['cocktails' => $cocktails]);
@@ -30,7 +30,7 @@ class CocktailController extends AbstractController {
 
     // #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
     // public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-        $cocktailsRepository = new cocktailsRepository;
+        $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findAll();
 
         // $cocktailID = $request->query->get("id");
@@ -42,7 +42,7 @@ class CocktailController extends AbstractController {
     #[Route('/three-cocktail', name:"three-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
 	public function threeCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
 
-        $cocktailsRepository = new cocktailsRepository;
+        $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findAll();
 
         $cocktailThree = array_slice($cocktails, 2, 1, true);
@@ -54,7 +54,7 @@ class CocktailController extends AbstractController {
     #[Route('/cocktail-category', name:"cocktail-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
 	public function categoryCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
         
-        $categoriesRepository = new categoriesRepository;
+        $categoriesRepository = new CategoriesRepository;
         $categories = $categoriesRepository->findAll();
         
         return $this->render('cocktail-category.html.twig', ['categories' => $categories]);
@@ -63,7 +63,7 @@ class CocktailController extends AbstractController {
     #[Route('/selected-category/{id}', name:"selected-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
 	public function selectedCategory($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
         
-        $categoriesRepository = new categoriesRepository;
+        $categoriesRepository = new CategoriesRepository;
         $categories = $categoriesRepository->findAll();
         // $cocktailID = $request->query->get("id");
         $category = $categories[$id];

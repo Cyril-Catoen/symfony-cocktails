@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-class cocktailsRepository {
+class CocktailsRepository {
 
 	public function findAll() {
 

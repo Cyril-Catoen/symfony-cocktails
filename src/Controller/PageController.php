@@ -7,7 +7,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\cocktailsRepository;
+use App\Repository\CocktailsRepository;
 
 
 // Création de la classe PageController
@@ -16,7 +16,7 @@ class PageController extends AbstractController {
 	#[Route('/', name:"home")] // Définition d'une route, soit le chemin d'accès (url) à "/"
 	public function home() { // Ajout d'une fonction nommée Home (méthode) // Quand un utilisateur demande l'url "/", la fonction est appelée
 
-        $cocktailsRepository = new cocktailsRepository;
+        $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findAll();
 
         $lastCocktails = array_slice($cocktails, -2, 2, true);
