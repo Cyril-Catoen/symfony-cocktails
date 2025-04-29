@@ -1,6 +1,11 @@
-<!-- On créé une base commune à toutes nos pages en incluant les templates partiels tel que header et footer. -->
-{% extends 'partials/_header.html.twig' %}
-        <!-- On définit un ou plusieurs block où insérer le contenu unique de chaque page. -->
-        {% block main %}
-        {% endblock main %}
+{% include 'partials/_header.html.twig' %}
+
+    {% block metatitle %}
+    {% endblock metatitle %}
+
+    {% block main %}
+    {% endblock main %}
+
+      
 {% include 'partials/_footer.html.twig' %}
+   
