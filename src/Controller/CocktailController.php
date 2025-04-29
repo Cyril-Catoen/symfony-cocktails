@@ -5,9 +5,11 @@ namespace App\Controller;
 
 // Remplace le require. Indique le namespace de la class à utiliser. Symfony & composer réalisent le require automatiquement. 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\cocktailsRepository;
+use App\Repository\categoriesRepository;
 
 // Création de la classe ListController
 class CocktailController extends AbstractController {
@@ -17,82 +19,9 @@ class CocktailController extends AbstractController {
     // Ajout d'une fonction nommée listCocktails (méthode) 
 	public function listCocktails() { 
 
-        $cocktails = [
-            1 => [
-                'id'            => 1,
-                'nom'           => 'Mojito',
-                'image'         => 'images/mojito.webp', // photo libre de droits
-                'ingredients'   => [
-                    '50 ml de rhum blanc',
-                    '½ citron vert (en quartiers)',
-                    '2 c.à.c. de sucre de canne',
-                    '8 feuilles de menthe fraîche',
-                    'Eau pétillante',
-                    'Glace pilée'
-                ],
-                'date_creation' => '1942-01-01',
-                'description'   => 'Classique cubain ultra-rafraîchissant mêlant menthe et citron vert.'
-            ],
-    
-            2 => [
-                'id'            => 2,
-                'nom'           => 'Margarita',
-                'image'         => 'images/margarita.jpg',
-                'ingredients'   => [
-                    '50 ml de tequila',
-                    '25 ml de triple sec (Cointreau)',
-                    '25 ml de jus de citron vert frais',
-                    'Sel pour givrer le verre',
-                    'Glace'
-                ],
-                'date_creation' => '1938-07-04',
-                'description'   => 'Tequila, triple-sec et citron vert dans un verre givré de sel pour un équilibre acidulé-salé.'
-            ],
-    
-            3 => [
-                'id'            => 3,
-                'nom'           => 'Old Fashioned',
-                'image'         => 'images/old_fashioned.png',
-                'ingredients'   => [
-                    '60 ml de bourbon ou rye whisky',
-                    '1 morceau de sucre',
-                    '2 traits d’angostura bitters',
-                    'Zeste d’orange',
-                    'Glaçon gros format'
-                ],
-                'date_creation' => '1880-05-15',
-                'description'   => 'Icône des classiques : un whisky subtilement sucré et aromatisé aux bitters.'
-            ],
-    
-            4 => [
-                'id'            => 4,
-                'nom'           => 'Piña Colada',
-                'image'         => 'images/pina_colada.jpg',
-                'ingredients'   => [
-                    '60 ml de rhum blanc',
-                    '90 ml de jus d’ananas',
-                    '30 ml de crème de coco',
-                    'Glaçons'
-                ],
-                'date_creation' => '1954-08-16',
-                'description'   => 'Spécialité portoricaine crémeuse et fruitée à base d’ananas et de coco.'
-            ],
-    
-            5 => [
-                'id'            => 5,
-                'nom'           => 'Negroni',
-                'image'         => 'images/negroni.webp',
-                'ingredients'   => [
-                    '30 ml de gin',
-                    '30 ml de vermouth rouge',
-                    '30 ml de Campari',
-                    'Zeste d’orange',
-                    'Glaçon gros format'
-                ],
-                'date_creation' => '1919-06-01',
-                'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
-            ],
-    ];
+        $cocktailsRepository = new cocktailsRepository;
+        $cocktails = $cocktailsRepository->findAll();
+
         return $this->render('list-cocktails.html.twig', ['cocktails' => $cocktails]);
     }
 
@@ -101,84 +30,8 @@ class CocktailController extends AbstractController {
 
     // #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
     // public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-    
-
-        $cocktails = [
-            1 => [
-                'id'            => 1,
-                'nom'           => 'Mojito',
-                'image'         => 'images/mojito.webp', // photo libre de droits
-                'ingredients'   => [
-                    '50 ml de rhum blanc',
-                    '½ citron vert (en quartiers)',
-                    '2 c.à.c. de sucre de canne',
-                    '8 feuilles de menthe fraîche',
-                    'Eau pétillante',
-                    'Glace pilée'
-                ],
-                'date_creation' => '1942-01-01',
-                'description'   => 'Classique cubain ultra-rafraîchissant mêlant menthe et citron vert.'
-            ],
-
-            2 => [
-                'id'            => 2,
-                'nom'           => 'Margarita',
-                'image'         => 'images/margarita.jpg',
-                'ingredients'   => [
-                    '50 ml de tequila',
-                    '25 ml de triple sec (Cointreau)',
-                    '25 ml de jus de citron vert frais',
-                    'Sel pour givrer le verre',
-                    'Glace'
-                ],
-                'date_creation' => '1938-07-04',
-                'description'   => 'Tequila, triple-sec et citron vert dans un verre givré de sel pour un équilibre acidulé-salé.'
-            ],
-
-            3 => [
-                'id'            => 3,
-                'nom'           => 'Old Fashioned',
-                'image'         => 'images/old_fashioned.png',
-                'ingredients'   => [
-                    '60 ml de bourbon ou rye whisky',
-                    '1 morceau de sucre',
-                    '2 traits d’angostura bitters',
-                    'Zeste d’orange',
-                    'Glaçon gros format'
-                ],
-                'date_creation' => '1880-05-15',
-                'description'   => 'Icône des classiques : un whisky subtilement sucré et aromatisé aux bitters.'
-            ],
-
-            4 => [
-                'id'            => 4,
-                'nom'           => 'Piña Colada',
-                'image'         => 'images/pina_colada.jpg',
-                'ingredients'   => [
-                    '60 ml de rhum blanc',
-                    '90 ml de jus d’ananas',
-                    '30 ml de crème de coco',
-                    'Glaçons'
-                ],
-                'date_creation' => '1954-08-16',
-                'description'   => 'Spécialité portoricaine crémeuse et fruitée à base d’ananas et de coco.'
-            ],
-
-            5 => [
-                'id'            => 5,
-                'nom'           => 'Negroni',
-                'image'         => 'images/negroni.webp',
-                'ingredients'   => [
-                    '30 ml de gin',
-                    '30 ml de vermouth rouge',
-                    '30 ml de Campari',
-                    'Zeste d’orange',
-                    'Glaçon gros format'
-                ],
-                'date_creation' => '1919-06-01',
-                'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
-            ],
-        ];
+        $cocktailsRepository = new cocktailsRepository;
+        $cocktails = $cocktailsRepository->findAll();
 
         // $cocktailID = $request->query->get("id");
         $singleCocktail = $cocktails[$id];
@@ -189,82 +42,8 @@ class CocktailController extends AbstractController {
     #[Route('/three-cocktail', name:"three-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
 	public function threeCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
 
-        $cocktails = [
-            1 => [
-                'id'            => 1,
-                'nom'           => 'Mojito',
-                'image'         => 'images/mojito.webp', // photo libre de droits
-                'ingredients'   => [
-                    '50 ml de rhum blanc',
-                    '½ citron vert (en quartiers)',
-                    '2 c.à.c. de sucre de canne',
-                    '8 feuilles de menthe fraîche',
-                    'Eau pétillante',
-                    'Glace pilée'
-                ],
-                'date_creation' => '1942-01-01',
-                'description'   => 'Classique cubain ultra-rafraîchissant mêlant menthe et citron vert.'
-            ],
-
-            2 => [
-                'id'            => 2,
-                'nom'           => 'Margarita',
-                'image'         => 'images/margarita.jpg',
-                'ingredients'   => [
-                    '50 ml de tequila',
-                    '25 ml de triple sec (Cointreau)',
-                    '25 ml de jus de citron vert frais',
-                    'Sel pour givrer le verre',
-                    'Glace'
-                ],
-                'date_creation' => '1938-07-04',
-                'description'   => 'Tequila, triple-sec et citron vert dans un verre givré de sel pour un équilibre acidulé-salé.'
-            ],
-
-            3 => [
-                'id'            => 3,
-                'nom'           => 'Old Fashioned',
-                'image'         => 'images/old_fashioned.png',
-                'ingredients'   => [
-                    '60 ml de bourbon ou rye whisky',
-                    '1 morceau de sucre',
-                    '2 traits d’angostura bitters',
-                    'Zeste d’orange',
-                    'Glaçon gros format'
-                ],
-                'date_creation' => '1880-05-15',
-                'description'   => 'Icône des classiques : un whisky subtilement sucré et aromatisé aux bitters.'
-            ],
-
-            4 => [
-                'id'            => 4,
-                'nom'           => 'Piña Colada',
-                'image'         => 'images/pina_colada.jpg',
-                'ingredients'   => [
-                    '60 ml de rhum blanc',
-                    '90 ml de jus d’ananas',
-                    '30 ml de crème de coco',
-                    'Glaçons'
-                ],
-                'date_creation' => '1954-08-16',
-                'description'   => 'Spécialité portoricaine crémeuse et fruitée à base d’ananas et de coco.'
-            ],
-
-            5 => [
-                'id'            => 5,
-                'nom'           => 'Negroni',
-                'image'         => 'images/negroni.webp',
-                'ingredients'   => [
-                    '30 ml de gin',
-                    '30 ml de vermouth rouge',
-                    '30 ml de Campari',
-                    'Zeste d’orange',
-                    'Glaçon gros format'
-                ],
-                'date_creation' => '1919-06-01',
-                'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
-            ],
-        ];
+        $cocktailsRepository = new cocktailsRepository;
+        $cocktails = $cocktailsRepository->findAll();
 
         $cocktailThree = array_slice($cocktails, 2, 1, true);
 
@@ -274,57 +53,18 @@ class CocktailController extends AbstractController {
 
     #[Route('/cocktail-category', name:"cocktail-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
 	public function categoryCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-        $categories = [
-            1 => [
-                "id" => 1,
-                "nom" => "cocktail",
-                "description" => "cocktails classiques avec alcool"
-            ],
-            2 => [
-                "id" => 2,
-                "nom" => "mocktail",
-                "description" => "cocktails sans alcool"
-            ],
-            3 => [
-                "id" => 3,
-                "nom" => "shooter",
-                "description" => "moins de 25 cl"
-            ],
-            4 => [
-                "id" => 4,
-                "nom" => "cocktails soft",
-                "description" => "cocktails sans alcool fort"
-            ],
-        ];
+        
+        $categoriesRepository = new categoriesRepository;
+        $categories = $categoriesRepository->findAll();
         
         return $this->render('cocktail-category.html.twig', ['categories' => $categories]);
     }
 
     #[Route('/selected-category/{id}', name:"selected-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
 	public function selectedCategory($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-        $categories = [
-            1 => [
-                "id" => 1,
-                "nom" => "cocktail",
-                "description" => "cocktails classiques avec alcool"
-            ],
-            2 => [
-                "id" => 2,
-                "nom" => "mocktail",
-                "description" => "cocktails sans alcool"
-            ],
-            3 => [
-                "id" => 3,
-                "nom" => "shooter",
-                "description" => "moins de 25 cl"
-            ],
-            4 => [
-                "id" => 4,
-                "nom" => "cocktails soft",
-                "description" => "cocktails sans alcool fort"
-            ],
-        ];
-
+        
+        $categoriesRepository = new categoriesRepository;
+        $categories = $categoriesRepository->findAll();
         // $cocktailID = $request->query->get("id");
         $category = $categories[$id];
         
