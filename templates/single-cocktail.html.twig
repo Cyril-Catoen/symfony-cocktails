@@ -1,6 +1,7 @@
-{% include 'partials/_header.html.twig' %}
-
+{% extends 'base.html.twig' %}
+	{% block main %}
     <main>
+        {% include 'partials/_aside-ad.html.twig' %}
 
 			<h1>Selected Cocktail</h1>
             <div id="article-order">
@@ -17,4 +18,4 @@
 					</article>
             </div>
 		</main>
-{% include 'partials/_footer.html.twig' %}
+        {% endblock main %}
