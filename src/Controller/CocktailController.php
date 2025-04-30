@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CocktailsRepository;
 use App\Repository\CategoriesRepository;
+use App\Entity\Cocktail;
 
 // Création de la classe ListController
 class CocktailController extends AbstractController {
@@ -49,6 +50,22 @@ class CocktailController extends AbstractController {
 
         return $this->render('three-cocktail.html.twig', ['cocktails' => $cocktailThree]);
     } 
+
+    #[Route('/create-cocktail', name: "create-cocktail")]
+	public function createCocktail() {
+
+		// récupère des infos d'un formulaire
+		$name = 'Gin Tonic';
+		$ingredients = "Gin, Tonic, concombre, citron";
+		$description = "Un peu amer mais désaltérant";
+		$image = "https://www.villaschweppes.com/app/uploads/2014/12/24649-l-experience-gin-tonic-orig-2.jpg";
+
+		$cocktail = new Cocktail($name, $description, $ingredients, $image);
+
+		dd($cocktail);
+		
+
+	}
 
 
     #[Route('/cocktail-category', name:"cocktail-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
