@@ -6,6 +6,13 @@
 
 
     {% block main %}
+
+        {% for message in app.flashes('success') %}
+			<div class="success-message">
+				{{ message }}
+			</div>
+        {% endfor %}
+
 	<main>
         <h1 class="main-title">Création d'un cocktail</h1>
 
