@@ -6,7 +6,7 @@ namespace App\Controller;
 // Remplace le require. Indique le namespace de la class à utiliser. Symfony & composer réalisent le require automatiquement. 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CocktailsRepository;
 use App\Repository\CategoriesRepository;
@@ -53,18 +53,8 @@ class CocktailController extends AbstractController {
 
     #[Route('/create-cocktail', name: "create-cocktail")]
 	public function createCocktail() {
-
-		// récupère des infos d'un formulaire
-		$name = 'Gin Tonic';
-		$ingredients = "Gin, Tonic, concombre, citron";
-		$description = "Un peu amer mais désaltérant";
-		$image = "https://www.villaschweppes.com/app/uploads/2014/12/24649-l-experience-gin-tonic-orig-2.jpg";
-
-		$cocktail = new Cocktail($name, $description, $ingredients, $image);
-
-		dd($cocktail);
-		
-
+        
+        return $this->render('create-cocktail.html.twig');
 	}
 
 
