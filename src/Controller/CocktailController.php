@@ -31,12 +31,12 @@ class CocktailController extends AbstractController {
     // #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
     // public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
         $cocktailsRepository = new CocktailsRepository;
-        $cocktails = $cocktailsRepository->findAll();
+        $cocktails = $cocktailsRepository->findOneByID($id);
 
         // $cocktailID = $request->query->get("id");
-        $singleCocktail = $cocktails[$id];
+        // $singleCocktail = $cocktails[$id];
 
-        return $this->render('single-cocktail.html.twig', ['cocktail' => $singleCocktail]);
+        return $this->render('single-cocktail.html.twig', ['cocktail' => $cocktails]);
     }
 
     #[Route('/three-cocktail', name:"three-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
