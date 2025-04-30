@@ -64,11 +64,11 @@ class CocktailController extends AbstractController {
 	public function selectedCategory($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
         
         $categoriesRepository = new CategoriesRepository;
-        $categories = $categoriesRepository->findAll();
+        $categories = $categoriesRepository->findOneByID($id);
         // $cocktailID = $request->query->get("id");
-        $category = $categories[$id];
+        // $category = $categories[$id];
         
-        return $this->render('selected-category.html.twig', ['category' => $category]);
+        return $this->render('selected-category.html.twig', ['category' => $categories]);
     }
 }
 ?>
