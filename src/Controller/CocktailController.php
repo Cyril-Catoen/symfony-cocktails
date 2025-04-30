@@ -52,10 +52,23 @@ class CocktailController extends AbstractController {
     } 
 
     #[Route('/create-cocktail', name: "create-cocktail")]
-	public function createCocktail() {
+	public function createCocktail(Request $request) {
+
+        if($request->isMethod('POST')){
+
+            $name = $request->request->get('name');
+            $ingredients = $request->request->get('ingredients');
+            $description = $request->request->get('description');
+            $image = $request->request->get('image');
+            $createdAt = $request->request->get('creation_date');
+
+            $cocktail = new Cocktail($name, $ingredients, $description, $image, $createdAt);
+
+            dd($cocktail);
+        }
         
         return $this->render('create-cocktail.html.twig');
-	}
+    }
 
 
     #[Route('/cocktail-category', name:"cocktail-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
