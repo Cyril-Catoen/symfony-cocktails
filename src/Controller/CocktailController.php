@@ -17,20 +17,20 @@ class CocktailController extends AbstractController {
 	// Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
     #[Route('/list-cocktails', name:"list-cocktails")] // Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
     // Ajout d'une fonction nommée listCocktails (méthode) 
-	public function listCocktails() { 
+	public function listCocktails(CocktailsRepository $cocktailsRepository) { 	// On utilise l'autowire de Symfony pour récupérer les objets dans le Repository concerné avec une variable donnée correspondant à notre tableau de données
 
-        $cocktailsRepository = new CocktailsRepository;
+        // $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findAll();
 
         return $this->render('list-cocktails.html.twig', ['cocktails' => $cocktails]);
     }
 
     #[Route('/single-cocktail/{id}', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	public function singleCocktail($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+	public function singleCocktail($id, CocktailsRepository $cocktailsRepository) { 	// On insère en paramètre l'id et le couple repository/variable à extraire du repository pour récupérer l'objet souhaité
 
     // #[Route('/single-cocktail', name:"single-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
     // public function singleCocktail(Request $request) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
-        $cocktailsRepository = new CocktailsRepository;
+        // $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findOneByID($id);
 
         // $cocktailID = $request->query->get("id");
@@ -40,9 +40,9 @@ class CocktailController extends AbstractController {
     }
 
     #[Route('/three-cocktail', name:"three-cocktail")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	public function threeCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+	public function threeCocktail(CocktailsRepository $cocktailsRepository) { 	// On utilise l'autowire de Symfony pour récupérer les objets dans le Repository concerné avec une variable donnée correspondant à notre tableau de données
 
-        $cocktailsRepository = new CocktailsRepository;
+        // $cocktailsRepository = new CocktailsRepository;
         $cocktails = $cocktailsRepository->findAll();
 
         $cocktailThree = array_slice($cocktails, 2, 1, true);
@@ -52,18 +52,18 @@ class CocktailController extends AbstractController {
 
 
     #[Route('/cocktail-category', name:"cocktail-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	public function categoryCocktail() { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+	public function categoryCocktail(CategoriesRepository $categoriesRepository) { 	// On utilise l'autowire de Symfony pour récupérer les objets dans le Repository concerné avec une variable donnée correspondant à notre tableau de données
         
-        $categoriesRepository = new CategoriesRepository;
+        // $categoriesRepository = new CategoriesRepository;
         $categories = $categoriesRepository->findAll();
         
         return $this->render('cocktail-category.html.twig', ['categories' => $categories]);
     }
 
     #[Route('/selected-category/{id}', name:"selected-category")] // Définition d'une route, soit le chemin d'accès (url) à "/list-cocktails"
-	public function selectedCategory($id) { 	// Ajout d'une fonction nommée listCocktails (méthode). Quand un utilisateur demande l'url "/list-cocktails", la fonction est appelée
+	public function selectedCategory($id, CategoriesRepository $categoriesRepository) { 	// On insère en paramètre l'id et le couple repository/variable à extraire du repository pour récupérer l'objet souhaité
         
-        $categoriesRepository = new CategoriesRepository;
+        // $categoriesRepository = new CategoriesRepository;
         $categories = $categoriesRepository->findOneByID($id);
         // $cocktailID = $request->query->get("id");
         // $category = $categories[$id];
