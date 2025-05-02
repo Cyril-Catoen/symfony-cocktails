@@ -2,22 +2,35 @@
 
 namespace App\Entity;
 
+use DateTime;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity()]
 
 class Cocktail {
 
-	public $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+	public ?int $id;
 
-	public $name;
+	#[ORM\Column(length: 255)]
+	public ?string $name;
 
-	public $description;
+	#[ORM\Column(length: 255)]
+	public ?string $description;
 
-	public $ingredients;
+	#[ORM\Column(length: 255)]
+	public ?string $ingredients;
 
-	public $image;
+	#[ORM\Column(length: 255)]
+	public ?string $image;
 
-	public $createdAt;
+	#[ORM\Column]
+	public DateTime $createdAt;
 
-	public $isPublished;
+	#[ORM\Column]
+	public bool $isPublished;
 
 
 	public function __construct($name, $description, $ingredients, $image) {
